@@ -45,3 +45,16 @@ resource "aws_eks_cluster" "eks-cluster" {
 
 }
 
+resource "aws_eks_addon" "addons" {
+  for_each          = { for addon in var.addons : addon.name => addon }
+  cluster_name      = aws_eks_cluster.eks-cluster.id
+  addon_name        = each.value.name
+  addon_version     = each.value.version
+  resolve_conflicts = "OVERWRITE"
+}
+
+resource "aws_iam_openid_connect_provider" "default" {
+  url             = "https://${local.oidc}"
+  client_id_list  = ["sts.amazonaws.com"]
+  thumbprint_list = ["9e99a48a9960b14926bb7f3b02e22da2b0ab7280"]
+}
