@@ -47,27 +47,3 @@ variable "cluster_config" {
   }
 }
 
-variable "addons" {
-  type = list(object({
-    name    = string
-    version = string
-  }))
-  default = [
-    {
-      name    = "kube-proxy"
-      version = "v1.27.4-eksbuild.2"
-    },
-    {
-      name    = "vpc-cni"
-      version = "v1.15.0-eksbuild.2"
-    },
-    {
-      name    = "coredns"
-      version = "v1.10.1-eksbuild.4"
-    },
-    {
-      name    = "aws-ebs-csi-driver"
-      version = "v1.22.0-eksbuild.2"
-    }
-  ]
-}
