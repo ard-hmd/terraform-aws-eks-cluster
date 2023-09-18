@@ -1,12 +1,12 @@
-# module "aws_vpc" {
-#   source                  = "github.com/ard-hmd/terraform-aws-vpc"
-#   region                  = var.aws_region
-#   vpc_cidr                = var.vpc_cidr
-#   environment             = var.environment
-#   azs                     = var.azs
-#   public_subnets_cidr     = var.public_subnets_cidr
-#   private_subnets_cidr    = var.private_subnets_cidr
-# }
+module "aws_vpc" {
+  source                  = "github.com/ard-hmd/terraform-aws-vpc"
+  region                  = var.aws_region
+  vpc_cidr                = var.vpc_cidr
+  environment             = var.environment
+  azs                     = var.azs
+  public_subnets_cidr     = var.public_subnets_cidr
+  private_subnets_cidr    = var.private_subnets_cidr
+}
 
 resource "aws_iam_role" "EKSClusterRole" {
   name = "EKSClusterRole"
