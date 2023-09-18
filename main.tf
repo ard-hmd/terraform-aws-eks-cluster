@@ -1,12 +1,3 @@
-# module "aws_vpc" {
-#   source                  = "github.com/ard-hmd/terraform-aws-vpc"
-#   vpc_cidr                = var.vpc_cidr
-#   environment             = var.environment
-#   azs                     = var.azs
-#   public_subnets_cidr     = var.public_subnets_cidr
-#   private_subnets_cidr    = var.private_subnets_cidr
-# }
-
 resource "aws_iam_role" "EKSClusterRole" {
   name = "EKSClusterRole"
   assume_role_policy = jsonencode({
@@ -35,7 +26,6 @@ resource "aws_eks_cluster" "eks-cluster" {
 
   vpc_config {
     subnet_ids         = flatten([var.public_subnets_ids, var.private_subnets_ids])
-    # security_group_ids = flatten(module.aws_vpc.security_groups_id)
   }
 
   depends_on = [
