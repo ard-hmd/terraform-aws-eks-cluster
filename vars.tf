@@ -35,3 +35,14 @@ variable "private_subnets_cidr" {
   default     = ["10.0.16.0/20", "10.0.144.0/20"]
   description = "List of CIDR blocks for the private subnets within the VPC."
 }
+
+variable "cluster_config" {
+  type = object({
+    name    = string
+    version = string
+  })
+  default = {
+    name    = "eks-cluster"
+    version = "1.22"
+  }
+}
