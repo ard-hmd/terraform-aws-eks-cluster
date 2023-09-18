@@ -1,6 +1,6 @@
 module "aws_vpc" {
   source                  = "github.com/ard-hmd/terraform-aws-vpc"
-  region                  = var.aws_region
+#   region                  = var.aws_region
   vpc_cidr                = var.vpc_cidr
   environment             = var.environment
   azs                     = var.azs
